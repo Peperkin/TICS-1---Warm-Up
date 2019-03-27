@@ -28,7 +28,7 @@ input[type=submit] {
 			<input type="submit" value="Fondo al jubilar con sueldo actual">
 		</form>
 		<form action="op2.php">
-			<input type="submit" value="Sueldo necesario para fondo deseado">
+			<input type="submit" value="APV necesario para lograr el monto de jubilación deseado">
 		</form>
 	</body>
 </center></html>
