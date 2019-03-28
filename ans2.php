@@ -8,13 +8,15 @@
 <body>
 <?php
 	$sexo = $_POST['sexo'];
-	$afp = $_POST['AFP'];
-	$tipo = $_POST['tipo'];
+/*	$afp = $_POST['AFP'];
+	$tipo = $_POST['tipo']; */
 	$pDeseada = $_POST['pDeseada'];
 	$pActual = $_POST['pActual'];
+	$sActual = $_POST['sActual'];
 	$edad = $_POST['edad'];
+	$Re = $_POST['rentabilidad']/100;
 	$mEmpl = 0;
-
+/*
 	switch($afp) {
 		case "Capital":
 			switch($tipo) {
@@ -131,15 +133,40 @@
 			}
 			break;
 	}
-
-	echo "Sexo: ", $sexo, "<br>AFP: ", $afp, "<br>Tipo: ", $tipo, "<br>Pensión deseada: ", $pDeseada, "<br>Pensión actual: ", $pActual, "<br>Edad: ", $edad, "<br>Rentabilidad: ", $p100, "<br>";
+*/
+	echo "Sexo: ", $sexo, "<br>Pensión deseada: ", $pDeseada, "<br>Pensión actual: ", $pActual, "<br>Salario actual: ", $sActual, "<br>Edad: ", $edad, "<br>Rentabilidad: ", $Re, "<br>";
 	if($sexo == 'Masculino') {
 		$mEmpl = (65 - $edad) * 12;
 	} elseif ($sexo == 'Femenino') {
 		$mEmpl = (60 - $edad) * 12;
 	}
 	echo "Meses de empleabilidad restantes: ", $mEmpl, "<br><br>";
-	$sNecesario = 0;
+	$apvNecesario = 0;
+	$apv = 0.45;
+	$temp_pActual = $pActual;
+
+	for($i = 0; $i < 10; $i++) {
+		for($j = 0; $j < $mEmpl; $j++) {
+			$temp_pActual = (1.0018*(1 + $Re)*$pActual) + ($sActual*(0.1 + $apv));
+		}
+		echo "pA: ", $temp_pActual, "<br>pD: ", $pDeseada, "<br><br>"; 
+		if($pDeseada <= $temp_pActual) {
+			$apv = $apv/2;
+			echo "entre1<br>";
+		} elseif ($pDeseada > $temp_pActual) {
+			$apv = $apv + $apv/2;
+			echo "entre2<br>";
+		}
+		echo $apv, "<br>";
+		$temp_pActual = $pActual;
+	}
+
+	echo "<br>APV: ", $apv;
+
+	for($i = 0; $i < $mEmpl; $i++) {
+		$pActual = (1.0018*(1+ $Re)*$pActual) + ($sActual*(0.1));
+	}
+	echo "Monto final: ", $pActual;
 ?>
 </body>
 </html>

@@ -1,62 +1,192 @@
 <!DOCTYPE html>
 <html>
 <style>
-input[type=text], select {
+body {
+  background: #332f35;
+  margin: 0 0;
+  padding:10px;
+  text-align:center;
+}
+.center-on-page {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+	visibility: hidden;
+}
+
+label {
+	position: relative;
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding-left: 30px;
+	padding-right: 10px;
+	line-height: 36px;
+	cursor: pointer;
+}
+
+label::before {
+	content: " ";
+	position: absolute;
+	top: 6px;
+	left: 0;
+	display: block;
+	width: 24px;
+	height: 24px
+	border: 2px solid #63ad44;
+	border-radius: 4px;
+	z-index: -1;
+}
+
+input[type="radio"] + label::before {
+  border-radius: 18px;
+}
+
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+  padding-left: 10px;
+  color: #fff;
+}
+
+input[type="radio"]:checked + label::before {
+  top: 0;
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  height: 100%;
+  background: #63ad44;
 }
 
-input[type=number] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+label,
+label::before {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
 }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+#bg {
+  position:fixed; 
+  top:-50%; 
+  left:-50%; 
+  width:200%; 
+  height:200%;
 }
 
-input[type=submit]:hover {
-  background-color: #45a049;
+#bg img {
+  position:absolute; 
+  top:0; 
+  left:0; 
+  right:0; 
+  bottom:0; 
+	margin:auto; 
+	min-width:50%;
+	min-height:50%;
 }
 
-div {
+.title {
+  position:relative;
+	font-family: 'Myriad Pro','Helvetica Neue', Helvetica;
+  font-weight:bold;
+  font-size: 25px;
+  text-shadow: 0px 1px 2px rgba(255,255,255,.5);
+  color: #444;
+  text-align:center;
+}
+
+form {
+  background: none;
+  margin: 20px auto 0;
+  padding: 10px;
+  width: 280px;
+}
+
+input {
+  display: block;
+  font-size: 14px;
+  width:240px;
+  margin: 10px auto;
+  padding: 10px 8px 10px 8px;
   border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0, .55), 0px 1px 1px rgba(255,255,255,.5);
+  border: 1px solid #666;
+}
+
+input {
+  opacity: 0.5;
+}
+
+input:hover,
+input:focus {
+  opacity: .7;
+  color:#08c;
+  border: 1px solid #08c;
+   box-shadow: 0px 1px 0px rgba(255,255,255,.25),inset 0px 3px 6px rgba(0,0,0,.25);
+}
+
+input[type="text"]:focus {
+  box-shadow: inset 0 1px 2px rgba(255,255,255, .35), 0px 1px 15px rgba(0,246,255,.5);
+  border: 1px solid #08c;
+  outline: none;
+}
+
+input[type="submit"] {
+  appearance: none;
+  opacity: .99;
+  width:120px;
+  background: #08c;
+  box-shadow: inset 0 1px 2px rgba(255,255,255, .35), 0px 1px 6px rgba(0,246,255,.5);
+  border: 1px solid #0a5378;
+  border-radius: 4px;
+  color: #eee;
+  cursor: pointer;
+  text-shadow:0px -1px 0px rgba(0,0,0,.5);
+}
+
+input[type="submit"]:hover {
+  background: #08c;
+  width:120px;
+  border: 1px solid #0a5378;
+  border-radius: 3px;
+  box-shadow: inset 0px 3px 16px rgba(0,0,0,.25),0px 1px 10px rgba(255,255,255,.5),inset 0px -1px 2px rgba(255,255,255,.35);
+  text-shadow:0px 1px 1px rgba(0,0,0,.65);
+  -webkit-transition: all 0.40s ease-out;
+  transition: all 0.40s ease-out;
+}
+
+select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
 }
 </style>
 	<head>
 		<title>Opción 2</title>
-		<style>
+	<!--<style>
 			head {background-color: black;}
-			body {background-color: powderblue;}
+			body {background-color: powder#63ad44;}
 			h1 {color: red;}
-		</style>
+		</style> -->
 		<h1><center>Retirement Simulator</center></h1>
 	</head>
 	<body>
 		<form action="ans2.php" method="post">
-			<input type="radio" name="sexo" value="Masculino" checked>Hombre
-			<input type="radio" name="sexo" value="Femenino">Mujer<br><br>
-			AFP:
-			<select name="AFP">
+			<div class="center-on-page">
+			<input type="radio" name="sexo" id='H' value="Masculino" checked>
+			<label for='H'>Hombre</label>
+			<input type="radio" name="sexo" id='M' value="Femenino">
+			<label for='M'>Mujer</label>
+			</div>
+		<!--	<select name="AFP" required>
+				<option value="" disabled selected hidden>AFP</option>
 				<option value="Capital">Capital</option>
 				<option value="Cuprum">Cuprum</option>
 				<option value="Habitat">Habitat</option>
@@ -64,22 +194,20 @@ div {
 				<option value="Planvital">Planvital</option>
 				<option value="Provida">Provida</option>
 			</select><br>
-			Tipo fondo:
-			<select name="tipo">
+			<select name="tipo" required>
+				<option value="" disabled selected hidden>Tipo Fondo</option>
 				<option value="A">A</option>
 				<option value="B">B</option>
 				<option value="C">C</option>
 				<option value="D">D</option>
 				<option value="E">E</option>
-			</select><br>
-			Pensión deseada:
-			<input type="number" min="0" name="pDeseada"><br>
-			Pensión actual:
-			<input type="number" min="0" name="pActual"><br>
-			Edad:
-			<input type="number" min="18" max="65" name="edad" value="18"><br>
-		<!--	APV:
-			<input type="number" min="0" max="90" name="apv" value="0"><br> -->
+			</select> -->
+			<br> 
+			<input type="number" placeholder="Rentabilidad (%)" name="rentabilidad"><br>
+			<input type="number" min="0" placeholder="Pensión Actual" name="pActual"><br>
+			<input type="number" min="0" placeholder="Salario Actual" name="sActual"><br>
+			<input type="number" placeholder="Edad" min="18" max="65" name="edad"><br>
+			<input type="number" placeholder="Pensión deseada" min="0" name="pDeseada"><br>
 			<input type="submit" value="Enviar">
 		</form>
 	</body>

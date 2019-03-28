@@ -8,13 +8,13 @@
 <body>
 <?php
 	$sexo = $_POST['sexo'];
-	$afp = $_POST['AFP'];
-	$tipo = $_POST['tipo'];
+/*	$afp = $_POST['AFP'];
+	$tipo = $_POST['tipo']; */
 	$pActual = $_POST['pActual'];
 	$sActual = $_POST['sActual'];
 	$edad = $_POST['edad'];
 	$APV = $_POST['apv']/100;
-	$Re = $_POST['rentabilidad'];
+	$Re = $_POST['rentabilidad']/100;
 	$mEmpl = 0;
 
 /*	switch($afp) {
@@ -134,7 +134,7 @@
 			break;
 	}
 */
-	echo "Sexo: ", $sexo, "<br>AFP: ", $afp, "<br>Tipo: ", $tipo, "<br>Pensión Actual: ", $pActual, "<br>Salario Actual: ", $sActual, "<br>Edad Actual: ", $edad, "<br>Rentabilidad: ", $Re, "<br>";
+	echo "Sexo: ", $sexo, "<br>Pensión Actual: ", $pActual, "<br>Salario Actual: ", $sActual, "<br>Edad Actual: ", $edad, "<br>Rentabilidad: ", $Re, "<br>";
 	if($sexo == 'Masculino') {
 		$mEmpl = (65 - $edad) * 12;
 	} elseif ($sexo == "Femenino") {
@@ -142,7 +142,7 @@
 	}
 	echo "Meses de empleabilidad restantes: ", $mEmpl, "<br><br>";
 	for($i = 0; $i < $mEmpl; $i++) {
-		$pActual = (1.0225*$Re*$pActual) + ($sActual*(0.1 + $APV));
+		$pActual = (1.0018*(1+ $Re)*$pActual) + ($sActual*(0.1 + $APV));
 	}
 	echo "Monto final: ", $pActual;
 

@@ -180,9 +180,9 @@ option {
 	<body>
 		<form action="ans1.php" method="post">
 			<div class="center-on-page">
-			<input type="radio" name="sexo" id='H' checked>
+			<input type="radio" name="sexo" id='H' value="Masculino" checked>
 			<label for='H'>Hombre</label>
-			<input type="radio" name="sexo" id='M'>
+			<input type="radio" name="sexo" id='M' value="Femenino">
 			<label for='M'>Mujer</label>
 			</div>
 		<!--	<select name="AFP" required>
