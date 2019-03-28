@@ -1,10 +1,26 @@
-<!-- Falta fórmula y CSS -->
-<!-- Cambiar valores rentabilidad -->
 <!DOCTYPE html>
 <html>
+<style>
+		head {background-color: black;}
+		body {	font-family: Times New Roman;
+				color: black;
+  				background: #332f35;
+  				font-size: 14px;
+  				font-weight: 600;
+		}
+		
+		 #contenido {
+        background-color:#ddd;
+        margin: 0 auto;
+        height:400px;
+        padding:10px;
+        width:460px;
+      }
+</style>
 <head>
 	<title>Resultados 2</title>
 </head>
+<div id="contenido">
 <body>
 <?php
 	$sexo = $_POST['sexo'];
@@ -14,7 +30,7 @@
 	$pActual = $_POST['pActual'];
 	$sActual = $_POST['sActual'];
 	$edad = $_POST['edad'];
-	$Re = $_POST['rentabilidad']/100;
+	$Re = $_POST['rentabilidad']/1200;
 	$mEmpl = 0;
 /*
 	switch($afp) {
@@ -142,30 +158,40 @@
 	}
 	echo "Meses de empleabilidad restantes: ", $mEmpl, "<br><br>";
 	$apv = 0.45;
+	$temp_apv = $apv;
 	$temp_pActual = $pActual;
 	$iter = 100000;
+	$check = 0;
+	$t_apv1 = 0;
+	$t_apv2 = 0;
 
 	for($i = 0; $i < $iter; $i++) {
 		for($j = 0; $j < $mEmpl; $j++) {
 			$temp_pActual = (1.0018*(1+ $Re)*$temp_pActual) + ($sActual*(0.1 + $apv));
 		}
+		if(($temp_pActual >= 0.95*$pDeseada) && ($temp_pActual <= 1.05*$pDeseada)) {
+			echo "Usted necesita un APV de: ", $apv*100, "% aproximadamente.<br>";
+			break;
+		}
 		if($pDeseada <= $temp_pActual) {
 			if($i != ($iter-1)) {
-				$apv = $apv/2;			
+				$apv = $apv/2;
+				$t_apv1 = $apv;		
 			} else {
 				echo "Usted no necesita APV!<br>";
+				$check = 1;
 			}
+
 		} elseif ($pDeseada > $temp_pActual) {
-			$apv = $apv + $apv/2;			
+			$apv = $apv + $apv/2;		
 		}
 		$temp_pActual = $pActual;
 	}
 	if($apv > 0.9) {
 		echo "No es posible alcanzar ese monto :(<br>";
-	} else {
-		echo "<br>Usted necesita un APV de: ", $apv*100, "%<br>";
 	}
-	echo $apv;
+
 ?>
 </body>
+</div>
 </html>

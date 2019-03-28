@@ -203,7 +203,7 @@ option {
 				<option value="E">E</option>
 			</select> -->
 			<br> 
-			<input type="number" placeholder="Rentabilidad (%)" name="rentabilidad"><br>
+			<input type="number" placeholder="Rentabilidad Anual (%)" name="rentabilidad"><br>
 			<input type="number" min="0" placeholder="Pensión Actual" name="pActual"><br>
 			<input type="number" min="0" placeholder="Salario Actual" name="sActual"><br>
 			<input type="number" placeholder="Edad" min="18" max="65" name="edad"><br>

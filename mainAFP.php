@@ -3,7 +3,7 @@
 <html>
 <style type="text/css">
 input[type=submit] {
-  width: 100%;
+  width: 40%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -18,8 +18,7 @@ input[type=submit] {
 	<title>Retirement Simulator</title>
 	<style>
 		head {background-color: black;}
-		body {background-color: powderblue;}
-		h1 {color: red;}
+		body {background-color: #332f35;}
 	</style>
 	<h1>Retirement Simulator</h1>
 </head>

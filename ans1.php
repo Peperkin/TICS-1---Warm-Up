@@ -1,11 +1,6 @@
-<!-- Falta CSS -->
-<!-- Cambiar valores rentabilidad -->
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Resultados 1</title>
-	<title>Resultados 1</title>
-	<style>
+<style>
 		head {background-color: black;}
 		body {	font-family: Times New Roman;
 				color: black;
@@ -21,13 +16,12 @@
         padding:10px;
         width:460px;
       }
-
-	</style>
+</style>
+<head>
+	<title>Resultados 1</title>
 </head>
-<title>Resultados 1</title>
 <div id="contenido">
 <body>
-
 <?php
 	$sexo = $_POST['sexo'];
 /*	$afp = $_POST['AFP'];
@@ -36,8 +30,9 @@
 	$sActual = $_POST['sActual'];
 	$edad = $_POST['edad'];
 	$APV = $_POST['apv']/100;
-	$Re = $_POST['rentabilidad']/100;
+	$Re = $_POST['rentabilidad']/1200;
 	$mEmpl = 0;
+
 /*	switch($afp) {
 		case "Capital":
 			switch($tipo) {
@@ -166,8 +161,8 @@
 		$pActual = (1.0018*(1+ $Re)*$pActual) + ($sActual*(0.1 + $APV));
 	}
 	echo "Monto final: ", $pActual;
-?>
 
+?>
 </body>
 </div>
 </html>
