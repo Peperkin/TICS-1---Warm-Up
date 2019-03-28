@@ -141,32 +141,31 @@
 		$mEmpl = (60 - $edad) * 12;
 	}
 	echo "Meses de empleabilidad restantes: ", $mEmpl, "<br><br>";
-	$apvNecesario = 0;
 	$apv = 0.45;
 	$temp_pActual = $pActual;
+	$iter = 100000;
 
-	for($i = 0; $i < 10; $i++) {
+	for($i = 0; $i < $iter; $i++) {
 		for($j = 0; $j < $mEmpl; $j++) {
-			$temp_pActual = (1.0018*(1 + $Re)*$pActual) + ($sActual*(0.1 + $apv));
+			$temp_pActual = (1.0018*(1+ $Re)*$temp_pActual) + ($sActual*(0.1 + $apv));
 		}
-		echo "pA: ", $temp_pActual, "<br>pD: ", $pDeseada, "<br><br>"; 
 		if($pDeseada <= $temp_pActual) {
-			$apv = $apv/2;
-			echo "entre1<br>";
+			if($i != ($iter-1)) {
+				$apv = $apv/2;			
+			} else {
+				echo "Usted no necesita APV!<br>";
+			}
 		} elseif ($pDeseada > $temp_pActual) {
-			$apv = $apv + $apv/2;
-			echo "entre2<br>";
+			$apv = $apv + $apv/2;			
 		}
-		echo $apv, "<br>";
 		$temp_pActual = $pActual;
 	}
-
-	echo "<br>APV: ", $apv;
-
-	for($i = 0; $i < $mEmpl; $i++) {
-		$pActual = (1.0018*(1+ $Re)*$pActual) + ($sActual*(0.1));
+	if($apv > 0.9) {
+		echo "No es posible alcanzar ese monto :(<br>";
+	} else {
+		echo "<br>Usted necesita un APV de: ", $apv*100, "%<br>";
 	}
-	echo "Monto final: ", $pActual;
+	echo $apv;
 ?>
 </body>
 </html>

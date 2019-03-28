@@ -207,7 +207,7 @@ option {
 			<input type="number" min="0" placeholder="Pensión Actual" name="pActual"><br>
 			<input type="number" min="0" placeholder="Salario Actual" name="sActual"><br>
 			<input type="number" placeholder="Edad" min="18" max="65" name="edad"><br>
-			<input type="number" placeholder="Ahorro Previsional Voluntario (APV)"min="0" max="90" name="apv"><br>
+			<input type="number" placeholder="Ahorro Previsional Voluntario (APV)"min="0" max="90" step="0.01" name="apv"><br>
 			<input type="submit" value="Enviar">
 		</form>
 	</body>

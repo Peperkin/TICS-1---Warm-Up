@@ -134,7 +134,7 @@
 			break;
 	}
 */
-	echo "Sexo: ", $sexo, "<br>Pensión Actual: ", $pActual, "<br>Salario Actual: ", $sActual, "<br>Edad Actual: ", $edad, "<br>Rentabilidad: ", $Re, "<br>";
+	echo "Sexo: ", $sexo, "<br>Pensión Actual: ", $pActual, "<br>Salario Actual: ", $sActual, "<br>Edad Actual: ", $edad, "<br>Rentabilidad: ", $Re, "<br>APV: ", $APV, "<br><br>";
 	if($sexo == 'Masculino') {
 		$mEmpl = (65 - $edad) * 12;
 	} elseif ($sexo == "Femenino") {
