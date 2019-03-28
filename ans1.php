@@ -4,8 +4,30 @@
 <html>
 <head>
 	<title>Resultados 1</title>
+	<title>Resultados 1</title>
+	<style>
+		head {background-color: black;}
+		body {	font-family: Times New Roman;
+				color: black;
+  				background: #332f35;
+  				font-size: 14px;
+  				font-weight: 600;
+		}
+		
+		 #contenido {
+        background-color:#ddd;
+        margin: 0 auto;
+        height:400px;
+        padding:10px;
+        width:460px;
+      }
+
+	</style>
 </head>
+<title>Resultados 1</title>
+<div id="contenido">
 <body>
+
 <?php
 	$sexo = $_POST['sexo'];
 /*	$afp = $_POST['AFP'];
@@ -16,7 +38,6 @@
 	$APV = $_POST['apv']/100;
 	$Re = $_POST['rentabilidad']/100;
 	$mEmpl = 0;
-
 /*	switch($afp) {
 		case "Capital":
 			switch($tipo) {
@@ -145,7 +166,8 @@
 		$pActual = (1.0018*(1+ $Re)*$pActual) + ($sActual*(0.1 + $APV));
 	}
 	echo "Monto final: ", $pActual;
-
 ?>
+
 </body>
+</div>
 </html>
